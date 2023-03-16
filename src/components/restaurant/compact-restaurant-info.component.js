@@ -25,8 +25,15 @@ const Item = styled.View`
 
 const isAndroid = Platform.OS === "android";
 
-export const CompactRestaurantInfo = ({ restaurant }) => {
-  const Image = isAndroid ? CompactWebview : CompactImage;
+export const CompactRestaurantInfo = ({
+  restaurant,
+  favouritesBar = false,
+}) => {
+  let Image = isAndroid ? CompactWebview : CompactImage;
+
+  if (favouritesBar) {
+    Image = CompactImage;
+  }
 
   return (
     <Item>
